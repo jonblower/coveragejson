@@ -1,7 +1,7 @@
 {
   "id": "http://.../schema/coverage-schema.json",
   "title": "Coverage schema",
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "description": "Schema for JSON Coverages",
   "properties": {
@@ -70,30 +70,7 @@
         }
       },
       "patternProperties": {
-        "^(?!type$).*" : {
-          "type": "object",
-          "description": "A Range object",
-          "properties": {
-            "type": {
-              "description": "The type of the Range object (always Range)",
-              "enum": [ "Range" ]
-            },
-            "values": {
-              "type": "array",
-              "description": "Array of numeric data values (nulls are valid)",
-              "minItems": 1,
-              "items": {
-                "anyOf": [
-                  { "type": "number" },
-                  { "type": "null" }
-                ]
-              }
-            },
-            "validMin": { "type": "number" },
-            "validMax": { "type": "number" }
-          },
-          "required": ["type", "values"]
-        }
+        "^(?!type$).*" : { "$ref": "file:./schema/rangeschema.json" }
       },
       "required": ["type"],
       "additionalProperties": false
