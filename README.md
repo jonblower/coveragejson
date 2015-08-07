@@ -10,4 +10,6 @@ This repository is work in progress, but contains:
  * JSON schema documents for validating data files
  * A validator program (in Python) for further validation
 
+Licences for the above are given in the appropriate folders and source files. This work is led by the University of Reading in the context of the [MELODIES](http://www.melodiesproject.eu) project.
+
 This has been forked from https://github.com/neothemachine/coveragejson and is intended to be merged in the near future.

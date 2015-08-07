@@ -1,0 +1,103 @@
+{
+  "id": "http://.../schema/coverage-schema.json",
+  "title": "Coverage schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Schema for JSON Coverages",
+  "properties": {
+    "type": {
+      "description": "The type of the coverage",
+      "enum": ["Coverage"]
+    },
+    "id": {
+      "description": "The identifier of the coverage",
+      "type": "string"
+    },
+    "parameters": {
+      "description": "The parameters in the range of the coverage",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "type": "object",
+          "description": "A parameter",
+          "properties": {
+            "id": { "type": "string" },
+            "type": {
+              "type": "string",
+              "description": "Type of the parameter object, must be Parameter",
+              "enum": ["Parameter"]
+            },
+            "description": { "type": "string"},
+            "observedProperty": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "label": { "type": "string"}
+              },
+              "required": [ "id" ]
+            },
+            "unit": {
+              "type": "object",
+              "properties": {
+                "symbol": { "type": "string" }
+              },
+              "required": ["symbol"]
+            }
+          },
+          "required": ["id", "type", "observedProperty"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "domain": {
+      "description": "The domain of the coverage",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of the domain",
+          "enum": ["Grid"]
+        }
+      },
+      "required" : ["type"]
+    },
+    "ranges": {
+      "description": "The range of the coverage",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of the ranges object (always RangeSet)",
+          "enum" : [ "RangeSet"]
+        }
+      },
+      "patternProperties": {
+        "^(?!type$).*" : {
+          "type": "object",
+          "description": "A Range object",
+          "properties": {
+            "type": {
+              "description": "The type of the Range object (always Range)",
+              "enum": [ "Range" ]
+            },
+            "values": {
+              "type": "array",
+              "description": "Array of numeric data values (nulls are valid)",
+              "minItems": 1,
+              "items": {
+                "anyOf": [
+                  { "type": "number" },
+                  { "type": "null" }
+                ]
+              }
+            },
+            "validMin": { "type": "number" },
+            "validMax": { "type": "number" }
+          },
+          "required": ["type", "values"]
+        }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["type", "id", "parameters", "domain", "ranges"]
+}
