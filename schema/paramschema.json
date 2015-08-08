@@ -1,0 +1,32 @@
+{
+  "id": "http://.../schema/paramschema.json",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "description": "A parameter within a Coverage or CoverageCollection",
+  "properties": {
+    "id": { "type": "string" },
+    "type": {
+      "type": "string",
+      "description": "Type of the parameter object, must be Parameter",
+      "enum": ["Parameter"]
+    },
+    "description": { "type": "string"},
+    "observedProperty": {
+      "type": "object",
+      "description": "URI pointing to a definition of the quantity being measured",
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string"}
+      },
+      "required": [ "id" ]
+    },
+    "unit": {
+      "type": "object",
+      "properties": {
+        "symbol": { "type": "string" }
+      },
+      "required": ["symbol"]
+    }
+  },
+  "required": ["id", "type", "observedProperty"]
+}

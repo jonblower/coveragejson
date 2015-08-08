@@ -1,0 +1,11 @@
+{
+  "id": "http://.../schema/master.json",
+  "description": "Top-level schema, can be used to validate any CoverageJSON document",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "oneOf" : [
+    { "$ref": "file:./schema/covschema.json" },
+    { "$ref": "file:./schema/covcollectionschema.json" },
+    { "$ref": "file:./schema/rangeschema.json" }
+  ]
+}

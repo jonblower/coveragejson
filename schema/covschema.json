@@ -17,37 +17,8 @@
       "description": "The parameters in the range of the coverage",
       "type": "object",
       "patternProperties": {
-        ".+": {
-          "type": "object",
-          "description": "A parameter",
-          "properties": {
-            "id": { "type": "string" },
-            "type": {
-              "type": "string",
-              "description": "Type of the parameter object, must be Parameter",
-              "enum": ["Parameter"]
-            },
-            "description": { "type": "string"},
-            "observedProperty": {
-              "type": "object",
-              "properties": {
-                "id": { "type": "string" },
-                "label": { "type": "string"}
-              },
-              "required": [ "id" ]
-            },
-            "unit": {
-              "type": "object",
-              "properties": {
-                "symbol": { "type": "string" }
-              },
-              "required": ["symbol"]
-            }
-          },
-          "required": ["id", "type", "observedProperty"]
-        }
-      },
-      "additionalProperties": false
+        ".+": { "$ref": "file:./schema/paramschema.json" }
+      }
     },
     "domain": {
       "description": "The domain of the coverage",

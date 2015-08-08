@@ -37,6 +37,39 @@ WORK-IN-PROGRESS
   </tr>
 </table>
 
+<!-- TOC depth:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [The CoverageJSON Format Specification](#the-coveragejson-format-specification)
+	- [TODO](#todo)
+	- [1. Introduction](#1-introduction)
+		- [1.1. Examples](#11-examples)
+		- [1.2. Definitions](#12-definitions)
+	- [2. Parameter Objects](#2-parameter-objects)
+	- [3. CoverageJSON Objects](#3-coveragejson-objects)
+		- [3.1. Domain Objects](#31-domain-objects)
+			- [3.1.1. Grid](#311-grid)
+			- [3.1.2. Profile](#312-profile)
+			- [3.1.3. PointSeries](#313-pointseries)
+			- [3.1.4. Point](#314-point)
+			- [3.1.5. Trajectory](#315-trajectory)
+			- [3.1.6. Section](#316-section)
+			- [3.1.7. Polygon](#317-polygon)
+			- [3.1.8. PolygonSeries](#318-polygonseries)
+			- [3.1.9. MultiPolygon](#319-multipolygon)
+			- [3.1.10. MultiPolygonSeries](#3110-multipolygonseries)
+			- [3.1.11. Coordinate Bounds](#3111-coordinate-bounds)
+		- [3.2. Range Objects](#32-range-objects)
+			- [3.2.1. Offset/Factor Encoding (CBOR-only)](#321-offsetfactor-encoding-cbor-only)
+			- [3.2.2. Missing Value Encoding (CBOR-only)](#322-missing-value-encoding-cbor-only)
+		- [3.3. Coverage Objects](#33-coverage-objects)
+		- [3.4. Coverage Collection Objects](#34-coverage-collection-objects)
+	- [4. Linked Data Context](#4-linked-data-context)
+	- [5. Resolving domain and range URLs](#5-resolving-domain-and-range-urls)
+	- [6. Media Type, File Extensions, and Encodings](#6-media-type-file-extensions-and-encodings)
+	- [Appendix A. Coverage Examples](#appendix-a-coverage-examples)
+	- [Attribution](#attribution)
+<!-- /TOC -->
+
 ## TODO
 
 - domain CRS
@@ -224,18 +257,18 @@ TODO CRS84 is 2D only! either we have separate horizontal CRS = CRS84 and vertic
 
 Overview:
 
-Domain               | x | y | z | t | sequence | polygon (xy)
----------------------|---|---|---|---|----------|-------------
-Grid                 |[M]|[M]|[O]|[O] 
-Profile              | M | M |[M]| O
-PointSeries          | M | M | O |[M]
-Point                | M | M | O | O
-PolygonSeries        |   |   | O |[M]|          |  M
-Polygon              |   |   | O | O |          |  M
-MultiPolygonSeries   |   |   | O |[M]|          | [M]
-MultiPolygon         |   |   | O | O |          | [M]
-Trajectory           |   |   | O |   | \[M\] (txy[z])
-Section              |   |   |[M]|   | \[M\] (txy)
+Domain               | x   | y   | z   | t   | sequence     | polygon (xy)
+---------------------|-----|-----|-----|-----|--------------|-------------
+Grid                 | [M] | [M] | [O] | [O] |              |
+Profile              | M   | M   | [M] | O   |              |
+PointSeries          | M   | M   | O   | [M] |              |
+Point                | M   | M   | O   | O   |              |
+PolygonSeries        |     |     | O   | [M] |              | M
+Polygon              |     |     | O   | O   |              | M
+MultiPolygonSeries   |     |     | O   | [M] |              | [M]
+MultiPolygon         |     |     | O   | O   |              | [M]
+Trajectory           |     |     | O   |     | [M] (txy[z]) |
+Section              |     |     | [M] |     | [M] (txy)    |
 
 
 M = Mandatory, single coordinate in coordinate space

@@ -32,6 +32,7 @@
         "validMin" : 10,
         "validMax" : 30
       }
+    }
     }, {
     "type" : "Coverage",
     "id" : "http://.../datasets/1/coverages/123",
@@ -50,7 +51,8 @@
         "validMin" : 10,
         "validMax" : 30
       }
-    }],
+    }
+  }],
   "@context" : [ "https://rawgit.com/neothemachine/coveragejson/master/contexts/coveragejson-base.jsonld", {
     "WIND" : {
       "@id" : "http://.../datasets/1/params/WIND",

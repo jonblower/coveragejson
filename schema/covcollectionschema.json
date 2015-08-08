@@ -1,0 +1,24 @@
+{
+  "description": "Schema describing coverage collections",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "type" : {
+      "description": "Type of the object, always CoverageCollection",
+      "enum": [ "CoverageCollection" ]
+    },
+    "coverages": {
+      "description": "Array of Coverage objects",
+      "type": "array",
+      "items": { "$ref": "file:./schema/covschema.json" }
+    },
+    "parameters": {
+      "description": "The parameters measured by the coverages in this collection",
+      "type": "object",
+      "patternProperties": {
+        ".+": { "$ref": "file:./schema/paramschema.json" }
+      }
+    }
+  },
+  "required": [ "type", "coverages" ]
+}
