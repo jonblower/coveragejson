@@ -17,20 +17,10 @@
       "description": "The parameters in the range of the coverage",
       "type": "object",
       "patternProperties": {
-        ".+": { "$ref": "file:./schema/paramschema.json" }
+        ".+": { "$ref": "https://raw.githubusercontent.com/jonblower/coveragejson/master/schema/paramschema.json" }
       }
     },
-    "domain": {
-      "description": "The domain of the coverage",
-      "type": "object",
-      "properties": {
-        "type": {
-          "description": "The type of the domain",
-          "enum": ["Grid"]
-        }
-      },
-      "required" : ["type"]
-    },
+    "domain": { "$ref": "file:./schema/domainschema.json" },
     "ranges": {
       "description": "The range of the coverage",
       "type": "object",
@@ -41,7 +31,7 @@
         }
       },
       "patternProperties": {
-        "^(?!type$).*" : { "$ref": "file:./schema/rangeschema.json" }
+        "^(?!type$).*" : { "$ref": "https://raw.githubusercontent.com/jonblower/coveragejson/master/schema/rangeschema.json" }
       },
       "required": ["type"],
       "additionalProperties": false

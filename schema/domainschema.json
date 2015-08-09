@@ -1,0 +1,55 @@
+{
+  "id": "http://.../schema/domainschema.json",
+  "description": "Schema for coverage domains",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "oneOf": [
+    {
+      "description": "Grid domain",
+      "properties": {
+        "type": { "enum": ["Grid"] },
+        "x": { "$ref": "#/definitions/spatialaxis" },
+        "y": { "$ref": "#/definitions/spatialaxis" },
+        "z": { "$ref": "#/definitions/spatialaxis" },
+        "t": { "$ref": "#/definitions/timeaxis" }
+      },
+      "required": [ "type", "x", "y" ]
+    },
+    {
+      "description": "Point series domain (timeseries at at point)",
+      "properties": {
+        "type": { "enum": ["PointSeries"] },
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" },
+        "t": { "$ref": "#/definitions/timeaxis" }
+      },
+      "required": [ "type", "x", "y", "t" ]
+    },
+    {
+      "description": "Vertical profile domain",
+      "properties": {
+        "type": { "enum": ["Profile"] },
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "$ref": "#/definitions/spatialaxis" },
+        "t": { "type": "string" }
+      },
+      "required": [ "type", "x", "y", "z" ]
+    }
+  ],
+  "definitions": {
+    "spatialaxis": {
+      "description": "Array of unique numbers (must be monotonically increasing or decreasing)",
+      "type": "array",
+      "items": { "type": "number" },
+      "uniqueItems": true
+    },
+    "timeaxis": {
+      "description": "Array of unique time strings (must be monotonically increasing)",
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    }
+  }
+}

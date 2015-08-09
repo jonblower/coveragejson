@@ -10,13 +10,13 @@
     "coverages": {
       "description": "Array of Coverage objects",
       "type": "array",
-      "items": { "$ref": "file:./schema/covschema.json" }
+      "items": { "$ref": "https://raw.githubusercontent.com/jonblower/coveragejson/master/schema/covschema.json" }
     },
     "parameters": {
       "description": "The parameters measured by the coverages in this collection",
       "type": "object",
       "patternProperties": {
-        ".+": { "$ref": "file:./schema/paramschema.json" }
+        ".+": { "$ref": "https://raw.githubusercontent.com/jonblower/coveragejson/master/schema/paramschema.json" }
       }
     }
   },

@@ -4,8 +4,9 @@
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "oneOf" : [
-    { "$ref": "file:./schema/covschema.json" },
-    { "$ref": "file:./schema/covcollectionschema.json" },
-    { "$ref": "file:./schema/rangeschema.json" }
+    { "$ref": "https://raw.githubusercontent.com/jonblower/coveragejson/master/schema/covschema.json" },
+    { "$ref": "https://raw.githubusercontent.com/jonblower/coveragejson/master/schema/covcollectionschema.json" },
+    { "$ref": "https://raw.githubusercontent.com/jonblower/coveragejson/master/schema/domainschema.json" },
+    { "$ref": "https://raw.githubusercontent.com/jonblower/coveragejson/master/schema/rangeschema.json" }
   ]
 }
